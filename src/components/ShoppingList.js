@@ -14,7 +14,7 @@ class ShoppingList extends Component {
     this.state = {
       total: 0,
       dataSource: this.ds.cloneWithRows(props.items)
-    }
+    };
   }
 
   //state={ items: [] };
@@ -26,13 +26,13 @@ class ShoppingList extends Component {
       .then(response => response.json())
       .then(responseData => this.setState({ dataSource: this.ds.cloneWithRows(responseData.items) }))
       .catch(error => {
-        console.log(response.json())
-        alert('niente da fare...')
-      })
+        console.log(error);
+        alert('niente da fare...');
+      });
   }
 
   updateTotal(amount) {
-    this.setState({ total: this.state.total + amount })
+    this.setState({ total: this.state.total + amount });
   }
 
   renderOrderItems() {

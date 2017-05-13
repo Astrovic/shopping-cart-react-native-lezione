@@ -2,17 +2,17 @@ import React from 'react';
 import { StyleSheet, View, Text, TextInput } from 'react-native';
 
 class ProductDetail extends React.Component {
-  state = {newPrice: this.props.price}
+  state = { newPrice: this.props.price }
   handleUpdatePrice = text => {
-    this.setState({newPrice: parseFloat(text)});
+    this.setState({ newPrice: parseFloat(text) });
     this.props.onPriceChange(parseFloat(text));
   }
 
-  render(){
-    const {wrapperStyle,titleStyle,descriptionStyle,priceStyle,newPriceStyle} = styles;
-    const {title,description,price} = this.props;
+  render() {
+    const { wrapperStyle, titleStyle, descriptionStyle, priceStyle, newPriceStyle } = styles;
+    const { title, description, price } = this.props;
 
-    return(
+    return (
       <View style={wrapperStyle}>
         <Text style={titleStyle}>{title}</Text>
         <Text style={descriptionStyle}>{description}</Text>
@@ -21,13 +21,12 @@ class ProductDetail extends React.Component {
           style={newPriceStyle}
           keyboardType='decimal-pad'
           placeholder="new price"
-          onChangeText= {this.handleUpdatePrice}
-           />
+          onChangeText={this.handleUpdatePrice}
+        />
       </View>
     );
-
   }
-};
+}
 
 const styles = StyleSheet.create({
   wrapperStyle: {
@@ -35,7 +34,7 @@ const styles = StyleSheet.create({
     //borderWidth: 1,
     flex: 2,
     marginHorizontal: 10,
-    justifyContent: 'center',
+    //justifyContent: 'center',
     /*marginHorizontal: 15,
     marginTop: 15,
     height: 200,
@@ -51,7 +50,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '400'
   },
-  descriptionStyle:{
+  descriptionStyle: {
     fontSize: 12
   },
   priceStyle: {
