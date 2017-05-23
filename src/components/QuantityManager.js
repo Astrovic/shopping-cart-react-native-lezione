@@ -9,9 +9,12 @@ class QuantityManager extends Component {
     this.onQuantityChange = this.onQuantityChange.bind(this);
   }
 
-  state= { quantity: 0 };
+  //state= { quantity: 0 };
 
   onQuantityChange({ decrease }) {
+    if (decrease && this.state.quantity === 0) {
+      return;
+    }
     if (decrease && this.state.quantity > 0) {
       this.setState({ quantity: this.state.quantity - 1 });
       this.props.onQuantityChange(-this.props.basePrice);

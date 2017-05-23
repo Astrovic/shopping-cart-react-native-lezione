@@ -2,9 +2,26 @@ import React from 'react';
 import { StyleSheet, View, Text, TextInput } from 'react-native';
 
 class ProductDetail extends React.Component {
-  state = { newPrice: this.props.price }
-  handleUpdatePrice = text => {
-    this.setState({ newPrice: parseFloat(text) });
+  // state = { newPrice: this.props.price }
+  // handleUpdatePrice = text => {
+  //   this.setState({ newPrice: parseFloat(text) });
+  //   this.props.onPriceChange(parseFloat(text));
+  // }
+  constructor(props) {
+    super(props);
+    // console.log("in constructor");
+    // console.log(this.props);
+    this.state = { newPrice: this.props.price }
+  }
+
+  handleUpdatePrice(text) {
+    if (isNaN(text)) {
+      return;
+    }
+    if (text == "") {
+      text = 0;
+    }
+    this.setState({ newPrice: text });
     this.props.onPriceChange(parseFloat(text));
   }
 
@@ -21,7 +38,7 @@ class ProductDetail extends React.Component {
           style={newPriceStyle}
           keyboardType='decimal-pad'
           placeholder="new price"
-          onChangeText={this.handleUpdatePrice}
+          onChangeText={this.handleUpdatePrice.bind(this)}
         />
       </View>
     );

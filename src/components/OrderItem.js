@@ -5,7 +5,7 @@ import ProductDetail from './ProductDetail';
 import QuantityManager from './QuantityManager';
 
 class OrderItem extends Component {
-  state = { newPrice: 25 };
+  state = { newPrice: this.props.productDetail.price };
 
   updatePrice = newPrice =>
     //this.setState({newPrice: newPrice}); è equivalente a
@@ -26,7 +26,7 @@ class OrderItem extends Component {
         title={this.props.productDetail.title}
         description={this.props.productDetail.description}
         onPriceChange={this.updatePrice}
-        price={25}
+        price={this.props.productDetail.price}
       />
       <QuantityManager
         onQuantityChange={this.props.onQuantityChange}
